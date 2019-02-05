@@ -41,10 +41,10 @@ assembly = true; // Order pieces toghether
 // Rendering ------------------------------
 
 zPositions = assembly
-	? [ 0, 25, 48, 60, 110, 110, 123, 110, 155, 164, 200]
+	? [ 0, 25, 48, 58, 110, 110, 123, 110, 155, 164, 200]
 	: [ 0, 30, 60, 80, 110, 120, 130, 130, 190, 210, 230];
 
-zPositionsArms = assembly ? [ 0, 0, 10, -2, -6, 27, 20] : [ 0, 0, 25.5, 10, 10, 52, 40];
+zPositionsArms = assembly ? [ 0, -4, 8, -2, -6, 27, 20] : [ 0, 0, 22, 6, 10, 52, 40];
 
 if (assembly) {
 	for (angle = columns_angle_range){
@@ -77,9 +77,9 @@ translate([0, 0, zPositions[4]]) rotate([0, 180, 0]) motor_platform();
 translate([0, -base_size-hle, zPositions[6]]) rotate([0, 0, 90]) {
 	translate([0, 0, zPositionsArms[0]]) first_arm_bottom();
 
-  translate([hle, 0, zPositionsArms[1]]) first_arm_bot_spacer();
+  translate([hle, 0, zPositionsArms[1]]) first_arm_mid_spacer();
 
-  translate([hle, 0, zPositionsArms[2]]) first_arm_mid_spacer();
+  translate([hle, 0, zPositionsArms[2]]) first_arm_bot_spacer();
 
   translate([hle, 0, zPositionsArms[3]]) arm_pulley();
 

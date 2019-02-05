@@ -8,7 +8,7 @@ module thsl_hole() {
 module motor_platform (height = 6) {
   difference() {
     union() {
-      rotate([0, 0, 30]) cylinder(r = base_size+6, h = height, $fn = 12);
+      rotate([0, 0, 30]) cylinder(r = base_size+6, h = height, $fn = 60);
 
       for(rotation = columns_angle_range) {
         rotate([0, 0, rotation]) translate([0, -base_size, 0]) {
@@ -32,7 +32,7 @@ module motor_platform (height = 6) {
         }
       }
 
-      translate([0, 47, height/2]) cube([42, 60, height], center = true); //NEMA17
+      translate([0, 55, height/2]) cube([42, 60, height], center = true); //NEMA17
     }
 
     //starting difference
@@ -56,6 +56,6 @@ module motor_platform (height = 6) {
     }
 
     // Motor Mount holes
-    translate([0, 50, 0.1]) nemaHoles(height*2);
+    translate([0, 60, 0.1]) nemaHoles(height*2); // original Y = 50
   }
 }
