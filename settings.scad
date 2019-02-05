@@ -1,5 +1,7 @@
 // Settings
 
+THSL_M8_threadnut_thru = 10.6;
+
 M8_pass_thru = 9;
 M8_nut = 15.5;
 diam_M8 = 8.3;

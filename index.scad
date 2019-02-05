@@ -15,14 +15,12 @@
 include <utils.scad>;
 
 // Parts
+include <parts/motor_platform.scad>;
 include <parts/bottom.scad>;
 include <parts/base_spacer.scad>;
 include <parts/motor_mount_z.scad>;
-include <parts/base_rod_blocker.scad>;
-include <parts/lower_motor.scad>;
-include <parts/nut_blocker.scad>;
+include <parts/base_rod_blocker.scad>;;
 include <parts/arms_spacer.scad>;
-include <parts/608_cap.scad>;
 include <parts/first_arm_bottom.scad>;
 include <parts/first_arm_mid_spacer.scad>;
 include <parts/arm_pulley.scad>;
@@ -30,7 +28,6 @@ include <parts/second_arm.scad>;
 include <parts/first_arm_bot_spacer.scad>;
 include <parts/first_arm_top_spacer.scad>;
 include <parts/first_arm_top.scad>;
-include <parts/upper_motor.scad>;
 include <parts/top.scad>;
 
 // Update following file parameters to change settings
@@ -44,8 +41,8 @@ assembly = true; // Order pieces toghether
 // Rendering ------------------------------
 
 zPositions = assembly
-	? [ 0, 25, 48, 60, 100, 110, 123, 110, 155, 164, 200]
-	: [ 0, 30, 60, 80, 100, 120, 130, 130, 190, 210, 230];
+	? [ 0, 25, 48, 60, 110, 110, 123, 110, 155, 164, 200]
+	: [ 0, 30, 60, 80, 110, 120, 130, 130, 190, 210, 230];
 
 zPositionsArms = assembly ? [ 0, 0, 10, -2, -6, 27, 20] : [ 0, 0, 25.5, 10, 10, 52, 40];
 
@@ -74,8 +71,7 @@ for (angle = columns_angle_range){
 	}
 }
 
-translate([0, 0, zPositions[4]]) lower_motor();
-*translate([0, 0, zPositions[5]]) nut_blocker();
+translate([0, 0, zPositions[4]]) rotate([0, 180, 0]) motor_platform();
 
 // Arms
 translate([0, -base_size-hle, zPositions[6]]) rotate([0, 0, 90]) {
@@ -100,7 +96,6 @@ translate([0, -hle*6, 0]) rotate([90, 0, 90]) color([1, 0, 0]) beltSizes();
 rotate([0, 0, 60]) translate([0, base_size, zPositions[7]]) arms_spacer();
 rotate([0, 0, -60]) translate([0, base_size, zPositions[7]]) arms_spacer();
 
-translate([0, 0, zPositions[8]]) upper_motor();
-translate([0, 0, zPositions[9]]) 608_cap();
+translate([0, 0, zPositions[8]]) motor_platform();
 
 translate([0, 0, zPositions[10]]) top();
