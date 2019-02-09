@@ -7,6 +7,8 @@ M8_nut = 15.5;
 diam_M8 = 8.3;
 diam_M8_nut = 15.5;
 
+diam_M6 = 6.5;
+
 M3_nut = 6.5;
 M3_blocked_nut = 6.1;
 M3_blocked_nut_height = 3.1;

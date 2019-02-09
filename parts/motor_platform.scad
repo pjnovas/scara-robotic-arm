@@ -8,7 +8,7 @@ module thsl_hole() {
 module motor_platform (height = 6) {
   difference() {
     union() {
-      rotate([0, 0, 30]) cylinder(r = base_size+6, h = height, $fn = 60);
+      cylinder(r = base_size+6, h = height, $fn = 60);
 
       for(rotation = columns_angle_range) {
         rotate([0, 0, rotation]) translate([0, -base_size, 0]) {
@@ -40,6 +40,10 @@ module motor_platform (height = 6) {
       rotate([0, 0, rotation]) translate([0, -base_size, 0]) {
         translate([0, 0, height - 2]) cylinder(r = r_LM8UU, h = 10, $fn = 80);
         cylinder(r = r_rod, h = height*2, center = true, $fn = 80);
+      }
+
+      rotate([0, 0, rotation + 60]) translate([0, -base_size+5, height/2]) {
+        cylinder(r = diam_M6/2, h = height+2, center = true, $fn = 80);
       }
     }
 
