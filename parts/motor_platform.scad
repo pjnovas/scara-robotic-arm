@@ -5,6 +5,22 @@ module thsl_hole() {
   cylinder(r = diam_M3/2, h = 20, $fn = 40, center = true);
 }
 
+module pressHole(height, rotation, length) {
+  rotate([0, 0, rotation]) translate([0, length, height/2]) {
+    cylinder(r = diam_M6/2, h = height+2, center = true, $fn = 80);
+  }
+}
+
+module rounded_cube(w, h, d, rdim, offset) {
+  hull() {
+    translate([(w-rdim)/2, (h-rdim)/2, -d/2]) cylinder(r=rdim, h=d, $fn=80);
+    translate([-(w-rdim)/2, (h-rdim)/2, -d/2]) cylinder(r=rdim, h=d, $fn=80);
+
+    translate([-(w-rdim)/2-offset, -(h-rdim)/2-offset, -d/2]) cylinder(r=rdim, h=d, $fn=80);
+    translate([(w-rdim)/2+offset, -(h-rdim)/2-offset, -d/2]) cylinder(r=rdim, h=d, $fn=80);
+  }
+}
+
 module motor_platform (height = 6) {
   difference() {
     union() {
@@ -23,16 +39,16 @@ module motor_platform (height = 6) {
             translate([0, 0, height]) cylinder(r = 10, h = 2, $fn = 50);
 
           } else {
-            cylinder(r = 12, h = height, $fn = 80);
+            cylinder(r = 13, h = height, $fn = 80);
             translate([0, 0, height + 1]) difference() {
-              cylinder(r = 12, h = 2, center = true, $fn = 80);
+              cylinder(r = 13, h = 2, center = true, $fn = 80);
               cylinder(r = 11, h = 4, center = true, $fn = 80);
             }
           }
         }
       }
 
-      translate([0, 55, height/2]) cube([42, 60, height], center = true); //NEMA17
+      translate([0, 58, height/2]) rounded_cube(40, 50, height, 5, 17);
     }
 
     //starting difference
@@ -42,8 +58,14 @@ module motor_platform (height = 6) {
         cylinder(r = r_rod, h = height*2, center = true, $fn = 80);
       }
 
-      rotate([0, 0, rotation + 60]) translate([0, -base_size+5, height/2]) {
-        cylinder(r = diam_M6/2, h = height+2, center = true, $fn = 80);
+      if (rotation == 120) { // Back hole (nema17)
+        pressHole(height, rotation + 60, -base_size + 15);
+      }
+      else if (rotation == 0) {
+        pressHole(height, rotation + 70, -base_size + 3);
+      }
+      else {
+        pressHole(height, rotation + 50, -base_size + 3);
       }
     }
 
@@ -51,7 +73,7 @@ module motor_platform (height = 6) {
     cylinder(r = THSL_M8_threadnut_thru/2, h = 20, $fn = 40, center = true); // pass thru
 
     // THSL Nut screws
-    THSL_nut_length = 7.5;
+    THSL_nut_length = 8;
     translate([0, -THSL_nut_length, 0]) thsl_hole();
     translate([-THSL_nut_length, 0, 0]) thsl_hole();
     rotate([0, 0, 180]) {

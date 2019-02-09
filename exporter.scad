@@ -28,7 +28,7 @@ include <settings.scad>;
 
 // Platfors ////////////////////
    motor_platform();        // 2
-// top();                   // 1
+// top();                   // 1 ---
 // bottom();                // 1
 // motor_mount_z();         // 1
 
@@ -46,3 +46,27 @@ include <settings.scad>;
 // first_arm_top_spacer();  // 1
 // base_rod_blocker();      // 3
 
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+// Print times (minutes)
+//
+// res | fill | speed
+// 0.3 | 20%  | 40 mm/s
+
+// motor_platform           || 240 (2 x 120)
+// top                      ||
+// bottom                   ||
+// motor_mount_z            ||
+// first_arm_bottom         ||
+// arm_pulley               ||
+// second_arm               ||
+// first_arm_top            ||
+// arms_spacer              ||
+// base_spacer              ||
+// first_arm_mid_spacer     ||
+// first_arm_bot_spacer     ||
+// first_arm_top_spacer     ||
+// base_rod_blocker         ||
+
+// Total ~ YYY hours
