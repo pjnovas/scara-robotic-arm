@@ -35,7 +35,7 @@ include <settings.scad>;
 
 // View settings
 
-assembly = true; // Order pieces toghether
+assembly = false; // Order pieces toghether
 
 ////////////////////////////////////////////
 // Rendering ------------------------------

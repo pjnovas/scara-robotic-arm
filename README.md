@@ -1,4 +1,7 @@
-# SCARA
+# SCARA Robotic Arm
+
+![Assembled](assembled.png)
+![Disassembled](disassembled.png)
 
 This is my take for an SCARA Robotic Arm, I've used this project to learn OpenSCAD mainly below are the real authors of this arm.
 My part was to refactor and update some of the work made by these guys.
