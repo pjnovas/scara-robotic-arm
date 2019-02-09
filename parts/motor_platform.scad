@@ -20,11 +20,11 @@ module motor_platform (height = 6) {
             // translate([0, base_size-12, -2.5]) cube([9, 9, 5], center = true);
 
             // Common (old lower)
-            translate([0, 0, -1]) cylinder(r = 10, h = 2, $fn = 50);
+            translate([0, 0, height]) cylinder(r = 10, h = 2, $fn = 50);
 
           } else {
             cylinder(r = 12, h = height, $fn = 80);
-            translate([0, 0, -1]) difference() {
+            translate([0, 0, height + 1]) difference() {
               cylinder(r = 12, h = 2, center = true, $fn = 80);
               cylinder(r = 11, h = 4, center = true, $fn = 80);
             }
@@ -38,8 +38,8 @@ module motor_platform (height = 6) {
     //starting difference
     for(rotation = columns_angle_range) {
       rotate([0, 0, rotation]) translate([0, -base_size, 0]) {
-        translate([0, 0, -10 + 2]) cylinder(r = r_LM8UU, h = 10, $fn = 80);
-        cylinder(r = r_rod, h = 40, center = true, $fn = 80);
+        translate([0, 0, height - 2]) cylinder(r = r_LM8UU, h = 10, $fn = 80);
+        cylinder(r = r_rod, h = height*2, center = true, $fn = 80);
       }
     }
 
