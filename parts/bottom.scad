@@ -13,7 +13,7 @@ module bottom() {
 
 			rotate([0, 0, rotation + 60]) {
         translate([0, -base_size-2, 0]) {
-				  cylinder(r = diam_M5/2, h = 50, $fn = 80, center = true);
+				  cylinder(r = diam_M6/2, h = 50, $fn = 80, center = true);
         }
 
         translate([0, -base_size-12, 20]) rotate([0, 0, 64]) {

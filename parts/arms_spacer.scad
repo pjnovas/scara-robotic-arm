@@ -3,7 +3,7 @@ include<../utils.scad>;
 include<../settings.scad>;
 
 module arms_spacer() {
-  spacer(44, 10.6, r_LM8UU+0.2);
+  spacer(44, 11, r_LM8UU);
 }
 
 // arms_spacer();
