@@ -1,10 +1,15 @@
 # SCARA Robotic Arm
 
+This is my take for an SCARA Robotic Arm, I've used this project to learn OpenSCAD mainly. At the very end are the real authors of this arm.
+
 ![Assembled](assembled.png)
 ![Disassembled](disassembled.png)
 
-This is my take for an SCARA Robotic Arm, I've used this project to learn OpenSCAD mainly below are the real authors of this arm.
-My part was to refactor and update some of the work made by these guys.
+### Testing movement with a Ramps 1.4v
+![Demo](gallery/20190916_115918.gif)  
+
+> Checkout the `gallery` dir for more pics 
+--- 
 
 This source is a fork of:
 [Parametrized SCARA robotic arm. Customizable](http://www.thingiverse.com/thing:3207936) by [Kalium](https://www.thingiverse.com/Kalium/about)  
